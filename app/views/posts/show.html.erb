@@ -35,4 +35,8 @@ Comments
 <br />
 <br />
 
-<%= render "comment", comments: @post.comments.where(parent_comment_id: nil) %>
+<ul>
+  <% @all_comments.where(parent_comment_id: nil).each do |comment| %>
+    <%= render "comment", comment: comment %>
+  <% end %>
+</ul>
