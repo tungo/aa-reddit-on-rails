@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_filter :require_login!, only: [:new, :create]
-  before_action :require_author!, only: [:edit, :update]
+  before_action :require_author!, only: [:edit, :update, :destroy]
   def new
     @post = Post.new
   end
@@ -36,6 +36,13 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:id])
+
+    unless @post.destroy
+      flash[:errors] = @post.errors.full_messages
+    end
+
+    redirect_to sub_url(@post.sub_id)
   end
 
   def post_params
@@ -43,6 +50,6 @@ class PostsController < ApplicationController
   end
 
   def require_author
-    if
+    redirect_to root_url unless current_user.posts.ids.include?(params[:id])
   end
 end
