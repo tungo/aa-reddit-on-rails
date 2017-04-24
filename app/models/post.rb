@@ -14,6 +14,8 @@
 class Post < ActiveRecord::Base
   validates :title, :sub, :author, presence: true
 
+  validate :require_sub
+
   belongs_to :author,
     foreign_key: :author_id,
     class_name: :User
@@ -25,5 +27,13 @@ class Post < ActiveRecord::Base
   has_many :subs,
     through: :posts_subs,
     source: :sub
+
+  private
+
+  def require_sub
+    if self.subs.length <= 0
+      errors[:subs] << "Require at least 1 sub"
+    end
+  end
 
 end
