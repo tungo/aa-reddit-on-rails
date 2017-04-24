@@ -1,12 +1,22 @@
 <h1>Post</h1>
 
+Sub: <%= link_to @post.sub.title, sub_url(@post.sub_id) %>
+<br />
+<br />
+<br />
+
 <%= @post.title %>
+<br />
 <br />
 <%= link_to @post.url, @post.url %>
 <br />
+<br />
 <%= @post.content %>
+<br />
+<br />
 <br />
 
 <%= link_to "Edit Post", edit_post_url(@post) %>
+<br />
 <br />
 <%= button_to "Delete Post", post_url(@post), method: :delete %>

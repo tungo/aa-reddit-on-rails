@@ -2,11 +2,27 @@
 
 Title: <%= @sub.title %>
 <br />
+<br />
 Description: <%= @sub.description %>
 <br />
+<br />
 Moderator: <%= @sub.moderator.username %>
+<br />
+<br />
 <br />
 
 <%= link_to "Edit Sub", edit_sub_url(@sub) %>
 <br />
+<br />
 <%= link_to "Add Post", new_post_url + "?sub_id=#{@sub.id}" %>
+<br />
+<br />
+
+All Posts
+<ul>
+<% @sub.posts.each do |post| %>
+  <li>
+    <%= link_to post.title, post_url(post) %>
+  </li>
+<% end %>
+</ul>
