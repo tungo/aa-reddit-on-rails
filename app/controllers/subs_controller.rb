@@ -1,4 +1,5 @@
 class SubsController < ApplicationController
+  before_filter :require_login!, only: [:new, :create]
   before_action :require_moderator!, only: [:edit, :update]
   def new
     @sub = Sub.new
