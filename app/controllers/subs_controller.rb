@@ -45,7 +45,9 @@ class SubsController < ApplicationController
   end
 
   def require_moderator!
-    flash[:errors] = ['You have no permission to do this']
-    redirect_to subs_url unless current_user.subs.ids.include?(params[:id])
+    unless current_user.subs.ids.include?(params[:id].to_i)
+      flash[:errors] = ['You have no permission to do this']
+      redirect_to subs_url
+    end
   end
 end

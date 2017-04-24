@@ -50,6 +50,9 @@ class PostsController < ApplicationController
   end
 
   def require_author!
-    redirect_to root_url unless current_user.posts.ids.include?(params[:id])
+    unless current_user.posts.ids.include?(params[:id].to_i)
+      flash[:errors] = ['You have no permission to do this']
+      redirect_to root_url
+    end
   end
 end
