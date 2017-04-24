@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 
   resources :subs
 
+  root to: "subs#index"
 end
