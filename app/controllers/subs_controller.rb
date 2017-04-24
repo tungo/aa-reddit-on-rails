@@ -1,4 +1,5 @@
 class SubsController < ApplicationController
+  before_action :require_moderator!, only: [:edit, :update]
   def new
     @sub = Sub.new
   end
@@ -40,5 +41,10 @@ class SubsController < ApplicationController
 
   def sub_params
     params.require(:sub).permit(:title, :description)
+  end
+
+  def require_moderator!
+    flash[:errors] = ['You have no permission to do this']
+    redirect_to subs_url unless current_user.subs.ids.include?(params[:id])
   end
 end
