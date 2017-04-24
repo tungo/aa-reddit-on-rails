@@ -1,2 +1,19 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<h1>New Post</h1>
+
+<form action="<%= posts_url %>" method="POST">
+  <%= auth_token %>
+
+  <label>Title:
+    <input type="text" name="post[title]" id="Title" value="<%= @post.title %>" />
+  </label>
+
+  <label>URL:
+    <input type="text" name="post[url]" id="URL"  value="<%= @post.url %>" />
+  </label>
+
+  <label>Content:
+    <input type="text" name="post[content]" id="Content"  value="<%= @post.content %>" />
+  </label>
+
+  <input type="submit" value="Create New Post" />
+</form>

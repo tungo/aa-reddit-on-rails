@@ -49,7 +49,7 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :url, :content, :sub_id)
   end
 
-  def require_author
+  def require_author!
     redirect_to root_url unless current_user.posts.ids.include?(params[:id])
   end
 end
