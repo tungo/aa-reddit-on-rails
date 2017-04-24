@@ -18,8 +18,9 @@
 <% end %>
 <br />
 
+<p style="color: red;">
 <%= flash[:errors].join("<br />").html_safe if flash[:errors] %>
-<br />
+</p>
 <br />
 
 <%= yield %>
