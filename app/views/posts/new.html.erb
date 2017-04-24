@@ -19,5 +19,19 @@
   </label>
   <br />
 
+  <label>Subs</label>
+  <br />
+  <% Sub.all.each do |sub| %>
+    <label>
+      <input
+        type="checkbox"
+        name="post[sub_ids][]"
+        value="<%= sub.id %>"
+        <%= "checked='checked'" if @post.sub_ids.include?(sub.id) %>
+        />
+      <%= sub.title %>
+    </label>
+  <% end %>
+
   <input type="submit" value="Create New Post" />
 </form>
