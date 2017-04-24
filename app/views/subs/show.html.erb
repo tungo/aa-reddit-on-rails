@@ -8,3 +8,5 @@ Moderator: <%= @sub.moderator.username %>
 <br />
 
 <%= link_to "Edit Sub", edit_sub_url(@sub) %>
+<br />
+<%= link_to "Add Post", new_post_url + "?sub_id=#{@sub.id}" %>

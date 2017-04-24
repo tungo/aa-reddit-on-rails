@@ -2,6 +2,7 @@
 
 <form action="<%= posts_url %>" method="POST">
   <%= auth_token %>
+  <input type="hidden" name="post[sub_id]" value="<%= params[:sub_id] %>">
 
   <label>Title:
     <input type="text" name="post[title]" id="Title" value="<%= @post.title %>" />
