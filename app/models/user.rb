@@ -19,11 +19,11 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
-  has_many :subs,
+  has_many :subs, dependent: :destroy,
     foreign_key: :moderator_id,
     class_name: :Sub
 
-  has_many :posts,
+  has_many :posts, dependent: :destroy,
     foreign_key: :author_id,
     class_name: :Post
 
