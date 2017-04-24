@@ -1,0 +1,14 @@
+<ul>
+  <% comments.each do |comment| %>
+    <li>
+      <%= comment.content %>
+      <br />
+      By <%= comment.author.username %>
+      <br />
+      <%= link_to "Detail", comment_url(comment) %>
+      <br />
+      <br />
+      <%= render "comment", comments: comment.child_comments %>
+    </li>
+  <% end %>
+</ul>

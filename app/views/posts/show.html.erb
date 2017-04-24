@@ -34,12 +34,5 @@ Comments
 <%= link_to "Add Comment", new_post_comment_url(@post) %>
 <br />
 <br />
-<% @post.comments.where(parent_comment_id: nil).each do |comment| %>
-  <%= comment.content %>
-  <br />
-  By <%= comment.author.username %>
-  <br />
-  <%= link_to "Detail", comment_url(comment) %>
-  <br />
-  <br />
-<% end %>
+
+<%= render "comment", comments: @post.comments.where(parent_comment_id: nil) %>
