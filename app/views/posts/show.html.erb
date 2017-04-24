@@ -15,7 +15,7 @@ Subs:
 <ul>
 <% @post.subs.each do |sub| %>
   <li>
-    <%= sub.title %>
+    <%= link_to sub.title, sub_url(sub) %>
   </li>
 <% end %>
 </ul>
