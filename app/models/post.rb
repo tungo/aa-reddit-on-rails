@@ -20,7 +20,7 @@ class Post < ActiveRecord::Base
     foreign_key: :author_id,
     class_name: :User
 
-  has_many :posts_subs, dependent: :destroy,
+  has_many :posts_subs, dependent: :destroy, inverse_of: :post,
     foreign_key: :post_id,
     class_name: :PostSub
 

@@ -18,7 +18,7 @@ class Sub < ActiveRecord::Base
     foreign_key: :moderator_id,
     class_name: :User
 
-  has_many :posts_subs, dependent: :destroy,
+  has_many :posts_subs, dependent: :destroy, inverse_of: :sub,
     foreign_key: :sub_id,
     class_name: :PostSub
 

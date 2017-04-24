@@ -9,5 +9,6 @@ class CreatePostsSubs < ActiveRecord::Migration
 
     add_index :posts_subs, :post_id
     add_index :posts_subs, :sub_id
+    add_index :posts_subs, [:post_id, :sub_id], unique: true
   end
 end
