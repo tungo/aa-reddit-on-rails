@@ -12,7 +12,7 @@
 #
 
 class Post < ActiveRecord::Base
-  validates :title, :sub, :author, presence: true
+  validates :title, :author, presence: true
 
   validate :require_sub
 
