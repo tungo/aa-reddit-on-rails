@@ -1,10 +1,5 @@
 <h1>Post</h1>
 
-Sub: <%= link_to @post.sub.title, sub_url(@post.sub_id) %>
-<br />
-<br />
-<br />
-
 <%= @post.title %>
 <br />
 <br />
@@ -15,6 +10,15 @@ Sub: <%= link_to @post.sub.title, sub_url(@post.sub_id) %>
 <br />
 <br />
 <br />
+Subs:
+<br />
+<ul>
+<% @post.subs.each do |sub| %>
+  <li>
+    <%= sub.title %>
+  </li>
+<% end %>
+</ul>
 
 <%= link_to "Edit Post", edit_post_url(@post) %>
 <br />
