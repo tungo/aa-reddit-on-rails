@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
     foreign_key: :author_id,
     class_name: :Post
 
+  has_many :comments, dependent: :destroy,
+    foreign_key: :author_id,
+    class_name: :Comment
+
   def self.generate_session_token
     SecureRandom::urlsafe_base64(16)
   end
