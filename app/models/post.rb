@@ -28,7 +28,7 @@ class Post < ActiveRecord::Base
     through: :posts_subs,
     source: :sub
 
-  had_many :comments, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   private
 

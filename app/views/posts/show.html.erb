@@ -24,3 +24,21 @@ Subs:
 <br />
 <br />
 <%= button_to "Delete Post", post_url(@post), method: :delete %>
+<br />
+<br />
+<br />
+
+Comments
+<br />
+<br />
+<%= link_to "Add Comment", new_post_comment_url(@post) %>
+<br />
+<br />
+<% @post.comments.each do |comments| %>
+  <p>
+    <%= comment.content %>
+  </p>
+  By <%= comment.author.username %>
+  <br />
+  <br />
+<% end %>
