@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     @user = User.find_by_credentials(params[:user][:username], params[:user][:password])
     if @user
       login!(@user)
-      
+
     else
       flash.now[:errors] = ['Invalid credentials']
       render :new
@@ -15,5 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    logout!
+    redirect_to new_session_url
   end
 end
