@@ -35,10 +35,11 @@ Comments
 <br />
 <br />
 <% @post.comments.each do |comment| %>
-  <p>
-    <%= comment.content %>
-  </p>
+  <%= comment.content %>
+  <br />
   By <%= comment.author.username %>
+  <br />
+  <%= link_to "Detail", comment_url(comment) %>
   <br />
   <br />
 <% end %>
