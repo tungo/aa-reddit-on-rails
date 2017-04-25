@@ -36,7 +36,7 @@ Comments
 <br />
 
 <ul>
-  <% @all_comments.where(parent_comment_id: nil).each do |comment| %>
+  <% @comments_by_parent_id[nil].each do |comment| %>
     <%= render "comment", comment: comment %>
   <% end %>
 </ul>

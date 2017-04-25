@@ -30,6 +30,16 @@ class Post < ActiveRecord::Base
 
   has_many :comments, dependent: :destroy
 
+  def comments_by_parent_id
+    result = Hash.new { |h, k| h[k] = [] }
+
+    self.comments.includes(:author).all.each do |comment|
+      result[comment.parent_comment_id] << comment
+    end
+
+    result
+  end
+
   private
 
   def require_sub

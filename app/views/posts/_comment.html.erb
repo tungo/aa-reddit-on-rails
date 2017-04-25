@@ -6,11 +6,10 @@
   <%= link_to "Detail", comment_url(comment) %>
   <br />
   <br />
+
   <ul>
-<% @all_comments.each do |c2| %>
-  <% if c2.parent_comment_id == comment.id %>
-    <%= render "comment", comment: c2  %>
-  <% end %>
-<% end %>
+    <% @comments_by_parent_id[comment.id].each do |child| %>
+    <%= render "comment", comment: child  %>
+    <% end %>
   </ul>
 </li>
